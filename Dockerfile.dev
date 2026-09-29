@@ -1,0 +1,15 @@
+FROM ubuntu:24.04
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends python3 python3-pip && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+ADD https://github.com/MrDave/StaticJinjaPlus/archive/refs/heads/main.tar.gz /tmp/app.tar.gz
+RUN tar xzf /tmp/app.tar.gz --strip-components=1 -C /app && rm /tmp/app.tar.gz
+
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
+RUN mv templates_example templates
+
+CMD ["python3", "main.py"]
