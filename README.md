@@ -27,10 +27,12 @@
 ### Универсальные (порт)
 
 Последний main:
+    
     docker build -f Dockerfile.ubuntu -t static-jinja-plus:develop .
     docker build -f Dockerfile.slim   -t static-jinja-plus:develop-slim .
 
 Конкретная версия:
+    
     docker build -f Dockerfile.ubuntu --build-arg APP_VERSION=0.1.1 -t static-jinja-plus:latest .
     docker build -f Dockerfile.slim   --build-arg APP_VERSION=0.1.1 -t static-jinja-plus:slim .
 
